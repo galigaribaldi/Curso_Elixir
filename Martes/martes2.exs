@@ -19,3 +19,7 @@ stream = [1,2,3] |>
     Stream.map(fn(x) -> x*x end)
     Enum.to_list(stream)
     #Enum.take(stream, 1)
+
+##############################################################################
+#Pin operator, no poder cambiar le valor de una varibale
+##############################################################################

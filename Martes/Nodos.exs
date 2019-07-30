@@ -1,10 +1,9 @@
-Stream.iterate(1,&(&1 + 1)) |>
-    Stream.map(&FizzBuzz.fizz_buzz/1)
-
-fb_stream = Stream.iterate(1, &)
+####### Nombre de un proceso
+iex --snmae node1@localhost
+### nomnbre del segundo proceso
+iex --snmae node2@localhost
 
 defmodule StreamBuzz do
-    
     def fizzbuzz(x) do
         Stream.iterate(0, &(&1 + 1)) |>
         Stream.map(fn x ->
@@ -19,3 +18,7 @@ defmodule StreamBuzz do
         Enum.each(&IO.puts/1)
     end
 end
+
+Node.spawn(:node2@localhost, fn -> StreamBuzz.fizzbuzz(100) end)
+
+Node.spawn(:node2@localhost, StreamBuzz, :fizzbuzz, [100])
